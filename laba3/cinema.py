@@ -62,18 +62,22 @@ def print_movies_by_date(movies, target_date):
     if not found:
         print("Фильмы не найдены")
 
+def print_all_movies(movies):
+    for movie in movies:
+        print(f"{movie['name']} - {movie['price']} руб. ({movie['date']}) (зрителей: {movie['viewers']})")
+
 def select_option():
-    print("1) Фильмы стоимостью менее 15 руб. \n"
-          "2) Фильмы на определенную дату \n"
-          "3) Выход")
-    option = int(input("Выберите опцию: "))
-    if option == 1:
-        print_movies_cheaper_than(read_movies("Кинотеатр.txt"), 15)
-    elif option == 2:
-        date = input("Введите вашу дату в формате ДД.ММ.ГГГГ:")
-        print_movies_by_date(read_movies("Кинотеатр.txt"), date)
-    elif option == 3:
-        return 0
-    else:
-        return -1
-    return 1
+    while True:
+        print("1) Фильмы стоимостью менее 15 руб. \n"
+              "2) Фильмы на определенную дату \n"
+              "3) Выход")
+        option = int(input("Выберите опцию: "))
+        if option == 1:
+            print_movies_cheaper_than(read_movies("Кинотеатр.txt"), 15)
+        elif option == 2:
+            date = input("Введите вашу дату в формате ДД.ММ.ГГГГ:")
+            print_movies_by_date(read_movies("Кинотеатр.txt"), date)
+        elif option == 3:
+            return 0
+        else:
+            return -1
